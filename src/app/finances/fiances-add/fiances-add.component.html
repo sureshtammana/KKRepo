@@ -1,0 +1,68 @@
+<div class="form bgImage" fxLayout="row" fxLayoutAlign="center center" > 
+
+    <div class="finance-container" >
+      
+      <div class="form-container">
+        <form [formGroup]="financesCreateForm" (submit)="onFinances()">
+          <mat-card class="box">
+          
+            <mat-card-header>
+              <mat-card-title>Contribute Financial Aid</mat-card-title>
+            </mat-card-header>  
+  
+            <mat-form-field class="form-field" appearance="outline">
+              <mat-label> Name
+              </mat-label>
+              <input matInput formControlName="name" required>
+              <mat-error *ngIf="financesCreateForm.controls.name!.touched && financesCreateForm.controls.name!.invalid">
+                <span *ngIf="financesCreateForm.controls.name.errors!.required">Please enter valid name.</span>
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Email
+                </mat-label>
+                <input matInput formControlName="email" required>
+                <mat-error *ngIf="financesCreateForm.controls.email!.touched && financesCreateForm.controls.email!.invalid">
+                  <span *ngIf="financesCreateForm.controls.email.errors!.required">Please enter valid email.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Phone
+                </mat-label>
+                <input matInput formControlName="phone" required>
+                <mat-error *ngIf="financesCreateForm.controls.phone!.touched && financesCreateForm.controls.phone!.invalid">
+                <span *ngIf="financesCreateForm.controls.phone.errors!.required">Please enter valid phone number.</span>
+                </mat-error>
+            </mat-form-field>
+              
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Organization
+                </mat-label>
+                <input matInput formControlName="organization" required>
+                <mat-error *ngIf="financesCreateForm.controls.organization!.touched && financesCreateForm.controls.organization!.invalid">
+                <span *ngIf="financesCreateForm.controls.organization.errors!.required">Please enter valid organization.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="form-field" appearance="outline">
+                <mat-label> Amount
+                </mat-label>
+                <input matInput formControlName="amount" required>
+                <mat-error *ngIf="financesCreateForm.controls.amount!.touched && financesCreateForm.controls.amount!.invalid">
+                <span *ngIf="financesCreateForm.controls.amount.errors!.required">Please enter valid amount.</span>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-card-actions align="end">
+              <button mat-raised-button color="primary" [disabled]="!financesCreateForm.valid" type="submit">Contribute Finance</button>
+            </mat-card-actions>
+  
+          </mat-card>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+  

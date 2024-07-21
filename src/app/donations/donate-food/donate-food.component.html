@@ -1,0 +1,75 @@
+<main>
+    <section class="sec1-inner position-relative text-white">
+    <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+    <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+    <div class="inner-page-top">
+        <article class="container" fxLayoutAlign="center center">  
+
+            <div class="form-container">
+
+            <form [formGroup]="donateFoodForm" (submit)="onDonateFood()">
+
+            <mat-card class="box">
+
+            <mat-card-header class = "my-card-header" fxLayoutAlign="center center">
+            <mat-card-title>Donate Food</mat-card-title>
+            </mat-card-header>
+
+            <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Type of Food
+            </mat-label>
+            <input matInput formControlName="food_type" required>
+            <mat-error *ngIf="donateFoodForm.controls.food_type!.touched && donateFoodForm.controls.food_type!.invalid">
+            <span *ngIf="donateFoodForm.controls.food_type.errors!.required">Please enter valid food type.</span>
+            </mat-error>
+            </mat-form-field>                
+
+            <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Quantity (Kg)
+            </mat-label>
+            <input matInput formControlName="quantity" required>
+            <mat-error *ngIf="donateFoodForm.controls.quantity!.touched && donateFoodForm.controls.quantity!.invalid">
+            <span *ngIf="donateFoodForm.controls.quantity.errors!.required">Please enter valid quantity.</span>
+            </mat-error>
+            </mat-form-field>                
+
+            <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Food Available Date
+            </mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="food_available_date" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="donateFoodForm.controls.food_available_date!.touched && donateFoodForm.controls.food_available_date!.invalid">
+            <span *ngIf="donateFoodForm.controls.food_available_date.errors!.required">Please enter valid food available date.</span>
+            </mat-error>
+            </mat-form-field>                
+
+            <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Transport Details
+            </mat-label>
+            <input matInput formControlName="transport_details" required>
+            <mat-error *ngIf="donateFoodForm.controls.transport_details!.touched && donateFoodForm.controls.transport_details!.invalid">
+            <span *ngIf="donateFoodForm.controls.transport_details.errors!.required">Please enter valid transport details.</span>
+            </mat-error>
+            </mat-form-field>
+
+            <ngp-image-picker
+            ($imageChanged)="onImageChanged($event)"
+            [_config]="imagePickerConf"
+            >
+            </ngp-image-picker>
+
+            <mat-card-actions align="end">
+            <button mat-stroked-button class = "my-stroked-button" color="primary" [disabled]="!donateFoodForm.valid" type="Submit" >Submit</button>
+            </mat-card-actions>
+
+            </mat-card>
+
+            </form>
+
+            </div>
+
+            </article>
+        </div>
+    </section>
+</main>

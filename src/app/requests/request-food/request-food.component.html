@@ -1,0 +1,87 @@
+<main>
+  <section class="sec1-inner position-relative text-white">
+  <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+  <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+  <div class="inner-page-top">
+      <article class="container" fxLayoutAlign="center center">  
+
+<div fxLayout="column" fxLayoutAlign="center center"  >
+
+    <div class="form-container">
+
+        <form [formGroup]="requestFoodForm" (submit)="onRequestFood()">
+
+            <mat-card class="box">
+
+                <mat-card-header class = "my-card-header" fxLayoutAlign="center center">
+                    <mat-card-title>Request Food</mat-card-title>
+                </mat-card-header>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Type of Food
+                    </mat-label>
+                    <input matInput formControlName="food_type" required>
+                    <mat-error *ngIf="requestFoodForm.controls.food_type!.touched && requestFoodForm.controls.food_type!.invalid">
+                      <span *ngIf="requestFoodForm.controls.food_type.errors!.required">Please enter valid food type.</span>
+                    </mat-error>
+                </mat-form-field>                
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Quantity Required
+                    </mat-label>
+                    <input matInput formControlName="quantity_required" required>
+                    <mat-error *ngIf="requestFoodForm.controls.quantity_required!.touched && requestFoodForm.controls.quantity_required!.invalid">
+                      <span *ngIf="requestFoodForm.controls.quantity_required.errors!.required">Please enter valid quantity required.</span>
+                    </mat-error>
+                </mat-form-field>                
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Required Date
+                    </mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="food_required_date" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="requestFoodForm.controls.food_required_date!.touched && requestFoodForm.controls.food_required_date!.invalid">
+                      <span *ngIf="requestFoodForm.controls.food_required_date.errors!.required">Please enter valid food required date.</span>
+                    </mat-error>
+                </mat-form-field>                
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Transport Details
+                    </mat-label>
+                    <input matInput formControlName="transport_details" required>
+                    <mat-error *ngIf="requestFoodForm.controls.transport_details!.touched && requestFoodForm.controls.transport_details!.invalid">
+                      <span *ngIf="requestFoodForm.controls.transport_details.errors!.required">Please enter valid transport details.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="form-field" appearance="outline">
+                    <mat-label> Location Details
+                    </mat-label>
+                    <input matInput formControlName="food_required_location" required>
+                    <mat-error *ngIf="requestFoodForm.controls.food_required_location!.touched && requestFoodForm.controls.food_required_location!.invalid">
+                      <span *ngIf="requestFoodForm.controls.food_required_location.errors!.required">Please enter valid location details.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <ngp-image-picker
+                    ($imageChanged)="onImageChanged($event)"
+                    [_config]="imagePickerConf"
+                >
+                </ngp-image-picker>
+
+                <mat-card-actions align="end">
+                    <button mat-stroked-button class = "my-stroked-button" color="primary" [disabled]="!requestFoodForm.valid" type="Submit" >Submit</button>
+                  </mat-card-actions>
+        
+            </mat-card>
+
+        </form>
+
+    </div>
+
+</div>
+</article>
+</div>
+</section>
+</main>

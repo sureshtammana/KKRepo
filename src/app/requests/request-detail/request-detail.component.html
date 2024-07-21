@@ -1,0 +1,42 @@
+<main>
+    <section class="sec1-inner position-relative text-white">
+    <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+    <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+    <div class="inner-page-top">
+        <article class="container" fxLayoutAlign="center center">  
+
+        <div class="form-container">
+            <mat-card class="box">
+
+                <mat-card-header fxLayoutAlign="center center">
+                    <mat-card-title class = "my-card-header">Request Detail</mat-card-title>
+                </mat-card-header>
+                
+                <mat-label class=form-field> Requested date: {{changeDateFormat(request?.food_required_date)}} </mat-label>  
+                <mat-label class=form-field> Food type: {{request?.food_type}} </mat-label>
+                <mat-label class=form-field> Quantity: {{request?.quantity_required}} </mat-label>
+                <mat-label class=form-field> Location: {{request?.food_required_location}} </mat-label>
+
+                <picture>
+                    <source media='(min-width:0px)' srcset="{{request?.food_image}}">
+                    <img mat-card-image class = "my-card-image" src="" width="150" height="150" margin-top=20px>
+                </picture>
+
+                <mat-label class=form-field *ngIf="user.role != 'NGO' && rejectedFood"> Request is Rejected By You </mat-label>
+                <mat-label class=form-field *ngIf="acceptedFood"> {{acceptedText}} </mat-label>
+
+                <mat-card-actions align="end">
+                    <button mat-stroked-button class = "my-stroked-button" color="primary" *ngIf="user.role != 'NGO' && !hideButtons" (click)="onAcceptRequest()">Accept</button>
+                </mat-card-actions>
+                <mat-card-actions align="end">
+                    <button mat-stroked-button class = "my-stroked-button" color="primary" *ngIf="user.role != 'NGO' && !hideButtons" (click)="onRejectRequest()">Reject</button>
+                </mat-card-actions>        
+
+            </mat-card>
+
+        </div>
+
+    </article>
+</div>
+</section>
+</main>

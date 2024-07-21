@@ -1,0 +1,110 @@
+<!-- Toolbar -->
+<app-header>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" /> 
+  <title>Kindness Kart</title>
+</head>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img src="assets/images/logo.jpg" alt="Avatar"></a>
+        <h1 class="inner-page-top-head" *ngIf="userLoggedIn">
+          <span class="wow fadeInUp" data-wow-delay="0.2s" style="color:white">Welcome {{user.name}}</span>
+        </h1>        
+        <button class="navbar-toggler" type="button" (click)="toggleCollapsed()" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample07" [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
+          <ul class="navbar-nav ml-auto"> 
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/" title="Home" (click)="toggleCollapsed()">Home </a>
+            </li>
+            <li class="nav-item" *ngIf="userLoggedIn">
+              <a class="nav-link" routerLink="/home" title="Menu" (click)="toggleCollapsed()">Menu </a>
+            </li>
+            <li class="nav-item" *ngIf="userLoggedIn">
+              <a class="nav-link" (click)="onLogout()" title="logout" (click)="toggleCollapsed()">Logout</a>
+            </li>
+            <li class="nav-item" *ngIf="!userLoggedIn">
+              <a class="nav-link" routerLink="/auth/login" title="Login" (click)="toggleCollapsed()">Login</a>
+            </li>
+            <li class="nav-item" *ngIf="!userLoggedIn">
+              <a class="nav-link" routerLink="/auth/register" title="Register" (click)="toggleCollapsed()">Register</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/about" title="About Us" (click)="toggleCollapsed()">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/contactus" title="Contact Us" (click)="toggleCollapsed()">Contact Us</a>
+            </li>
+          </ul> 
+        </div>
+      </div>
+    </nav>
+  </header>
+</app-header>
+<router-outlet></router-outlet>
+<app-footer>
+  <footer class="py-5 text-white">
+    <article class="container">
+      <div class="row">
+        <div class="col-12 col-md-4 mb-4">
+          <h5 class="ftr-head">Contact Us</h5>           
+          <p>Please reach out to us if you have suggestions/feedback. Your valuable feedback is always welcome.</p>
+          <p class="mb-0"><a href="mailto:kkorg_hyd@gmail.com" class="info text-white" title="Send Email"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span>kkorg.hyd@gmail.com</span></a></p>
+        </div>
+      <div class="col-12 col-md-4 mb-4">
+        <h5 class="ftr-head">Links</h5>
+         <ul class="m-link">
+           <li><a routerLink="/" title="Home">Home</a></li>
+           <li><a routerLink="/about" title="About Us">About Us</a></li>
+           <li><a routerLink="/contactus" title="Contact Us">Contact Us</a></li>
+         </ul>
+        </div>
+        <div class="col-12 col-md-4 mb-4">
+          <h5 class="ftr-head">Follow Us On</h5> 
+          <ul class="follow-us"> 
+            <li>
+              <a href="#" target="_blank" aria-label="Follow us on Twitter" title="Follow us on Twitter">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>              
+            <li>
+                <a href="#" target="_blank" aria-label="Follow us on Facebook" title="Follow us on Facebook">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li>
+              <a href="#" target="_blank" aria-label="Follow us on LinkedIn" title="Follow us on LinkedIn">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+              </a>
+          </li>
+            
+        </ul>
+        </div>          
+      </div>
+    </article>
+    <article class="container-fluid text-center pt-3 border-top">
+      <div class="row">
+        <div class="col-12">
+          <p class="mb-0">Copyright &copy; 2021 KKOrg.</p>
+        </div>
+      </div>        
+    </article>
+  </footer>
+
+  
+  <a href="javascript:void(0);" title="ScrollTop" aria-label="ScrollTop" class="scrolltoTop">
+    <i class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+  </a> 
+  <!-- jQuery first, then Bootstrap JS -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/custom.js"></script>
+</app-footer>
+
+

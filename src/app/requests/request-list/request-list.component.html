@@ -1,0 +1,56 @@
+<main>
+  <section class="sec1-inner position-relative text-white">
+    <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+    <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+    <div class="inner-page-top">
+    <article class="container" fxLayoutAlign="center center">  
+
+  <table mat-table [dataSource]="requests" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="postedName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let request"> {{request.postedName}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="food_type">
+        <th mat-header-cell *matHeaderCellDef> Food Type </th>
+        <td mat-cell *matCellDef="let request"> {{request.food_type}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Required Quantity </th>
+        <td mat-cell *matCellDef="let request"> {{request.quantity_required}} </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="mobile_number">
+        <th mat-header-cell *matHeaderCellDef> Mobile </th>
+        <td mat-cell *matCellDef="let request"> {{request.mobile_number}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef> Food Required Date </th>
+          <td mat-cell *matCellDef="let request"> {{changeDateFormat(request.food_required_date)}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef> Location </th>
+          <td mat-cell *matCellDef="let request"> {{request.food_required_location}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+          <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+          <tr>
+            <td mat-cell *matCellDef="let request" style="width:20%">
+              <button mat-icon-button color="primary" (click)="viewRequest(request)" title="View Request"><mat-icon>preview</mat-icon></button>
+            </td>
+          <tr>
+        </ng-container>      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+  </article>
+</div>
+</section>
+</main> 

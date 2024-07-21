@@ -1,0 +1,86 @@
+<main>
+  <section class="sec1-inner position-relative text-white">
+    <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+    <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+    <div class="inner-page-top">
+    <article class="container" fxLayoutAlign="center center">  
+
+    <div class="form-container">
+      <form [formGroup]="registerForm" (submit)="onRegister()">
+
+        <mat-card class="box">
+          <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>Register</mat-card-title>
+          </mat-card-header> 
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label>User Type</mat-label>
+            <mat-select matNativeControl required [formControl]="roleControl" (selectionChange)="onchange($event.value)"
+            (opened)="onopen()" (closed)="onclose()">
+              <mat-option *ngFor="let role of roles" [value]="role">{{role}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="roleControl.hasError('required')">
+              Please select who you are
+            </mat-error>
+            <mat-hint>Please enter organization name</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Name
+            </mat-label>
+            <input matInput formControlName="name" required>
+            <mat-error *ngIf="registerForm.controls.email!.touched && registerForm.controls.email!.invalid">
+              <span *ngIf="registerForm.controls.email.errors!.required">Name field is mandatory.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Password
+            </mat-label>
+            <input matInput formControlName="password" type="password" required>
+            <mat-error *ngIf="registerForm.controls.password!.touched && registerForm.controls.password!.invalid">
+              <span *ngIf="registerForm.controls.password.errors!.required">This field is mandatory.</span>
+              <span *ngIf="registerForm.controls.password.errors!.minLength">Min 6 Characters.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> Phone
+            </mat-label>
+            <input matInput formControlName="phone" required>
+            <mat-error *ngIf="registerForm.controls.phone!.touched && registerForm.controls.phone!.invalid">
+              <span *ngIf="registerForm.controls.phone.errors!.required">This field is mandatory.</span>
+              <span *ngIf="registerForm.controls.phone.errors!.minLength">Min 6 Characters.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline">
+            <mat-label> E-mail
+            </mat-label>
+            <input matInput formControlName="email" required>
+            <mat-error *ngIf="registerForm.controls.email!.touched && registerForm.controls.email!.invalid">
+              <span *ngIf="registerForm.controls.email.errors!.required">This field is mandatory.</span>
+              <span *ngIf="registerForm.controls.email.errors!.pattern">Please enter valid email.</span>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="form-field" appearance="outline" *ngIf="others">
+            <mat-label> Others
+            </mat-label>
+            <input matInput formControlName="other_role">
+          </mat-form-field>
+
+          <mat-card-actions align="end">
+            <button mat-stroked-button class = "my-stroked-button" color="primary" [disabled]="!registerForm.valid" type="Submit" >Register</button>
+          </mat-card-actions>
+
+        </mat-card>
+
+      </form>
+    </div>
+
+  
+  </article>
+</div>
+</section>
+</main>

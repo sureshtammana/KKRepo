@@ -1,0 +1,39 @@
+<main>
+    <section class="sec1-inner position-relative text-white">
+      <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+      <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+      <div class="inner-page-top">
+      <article class="container" fxLayoutAlign="center center">   
+        <div fxLayout="column" fxLayoutAlign="center center">
+        <div class="form-container">
+            <mat-card class="box">
+
+                <mat-card-header fxLayoutAlign="center center">
+                    <mat-card-title class = "my-card-title">Donation Detail</mat-card-title>
+                </mat-card-header>
+
+                <mat-label class=form-field> Food type: {{donation?.food_type}} </mat-label>
+                <mat-label class=form-field> Quantity: {{donation?.quantity}} </mat-label>
+                <mat-label class=form-field> Food Available Date: {{changeDateFormat(donation?.food_available_date)}} </mat-label>   
+                <mat-label class=form-field> Transport Mode: {{donation?.transport_details}} </mat-label>
+
+                <picture>
+                    <source media='(min-width:0px)' srcset="{{donation?.food_image}}">
+                    <img mat-card-image src="" width="150" height="150" margin-top=20px>
+                </picture>
+
+                <mat-label class=form-field *ngIf="acceptedFood"> This food is already accepted </mat-label>
+
+                <mat-card-actions align="end">
+                    <button mat-stroked-button class = "my-stroked-button" *ngIf="!acceptedFood" color="primary" (click)="onAcceptDonation()" >Accept</button>
+                </mat-card-actions>                
+
+            </mat-card>
+        </div>
+
+    </div>
+</article>
+</div>
+</section>
+</main>
+

@@ -1,0 +1,25 @@
+<main>
+    <section class="sec1-inner position-relative text-white">
+      <img src="assets/images/Home_about.jpg" alt="About" class="inner-page-img img-fluid d-none d-md-block" />
+      <img src="assets/images/Home_about_mob.jpg" alt="About" class="inner-page-img img-fluid d-block d-md-none" />
+      <div class="inner-page-top">
+      <article class="container" fxLayoutAlign="center center"> 
+  
+        <div class="form-container" fxLayout="row" fxLayoutAlign="center center" > 
+            <mat-card class="box">
+                
+                <button *ngIf="user.role === 'NGO'" mat-stroked-button class ="my-stroked-button" color="primary" routerLink="/requests/food" >"Request Food"</button>
+                <button mat-stroked-button class ="my-stroked-button" color="primary" routerLink="/requests" >"View Requests"</button>
+                <button *ngIf="user.role != 'NGO'" mat-stroked-button class ="my-stroked-button" color="primary" routerLink="/donations/food" >"Donate Food"</button>
+                <button mat-stroked-button class ="my-stroked-button" color="primary" routerLink="/donations" >"View Donations"</button>
+                
+            </mat-card>
+
+        </div>
+
+    </article>
+</div>
+</section>
+</main>
+
+
